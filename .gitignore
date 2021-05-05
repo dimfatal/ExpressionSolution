@@ -3,3 +3,9 @@
 /project/target/
 /target/
 /target/scala-2.13/classes/
+target/
+.idea/
+.bloop/
+.metals/
+.vscode/
+/project/metals.sbt
