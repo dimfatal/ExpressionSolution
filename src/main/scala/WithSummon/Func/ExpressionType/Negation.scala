@@ -1,4 +1,4 @@
-package WithSummon.Func.TypeClass
+package WithSummon.Func.ExpressionType
 
 trait Negation[F[_], T] {
   def neg(e: F[T]): F[T]

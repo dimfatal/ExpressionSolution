@@ -1,4 +1,4 @@
-package WithSummon.Func.TypeClass
+package WithSummon.Func.ExpressionType
 
 trait Addition[F[_], T] {
   def add(e1: F[T], e2: F[T]): F[T]

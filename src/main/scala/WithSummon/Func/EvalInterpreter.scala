@@ -1,6 +1,6 @@
 package WithSummon.Func
 
-import WithSummon.Func.TypeClass.{Addition, Division, Multiplication, Negation, Rub}
+import WithSummon.Func.ExpressionType.{Addition, Division, Multiplication, Negation, Rub}
 import cats.data.{EitherNec, NonEmptyChain}
 import cats.implicits._
 import cats.{Applicative, Apply, Functor, Id, MonadError, NonEmptyParallel}

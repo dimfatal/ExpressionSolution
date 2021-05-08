@@ -1,6 +1,6 @@
 package WithSummon.Func
 
-import WithSummon.Func.TypeClass.{Addition, Division, Multiplication, Negation, Rub}
+import WithSummon.Func.ExpressionType.{Addition, Division, Multiplication, Negation, Rub}
 
 object ExpressionProgram {
 

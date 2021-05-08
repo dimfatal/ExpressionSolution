@@ -1,4 +1,4 @@
-package WithSummon.Func.TypeClass
+package WithSummon.Func.ExpressionType
 
 trait Multiplication[F[_], T] {
   def mul(e1: F[T], e2: F[T]): F[T]

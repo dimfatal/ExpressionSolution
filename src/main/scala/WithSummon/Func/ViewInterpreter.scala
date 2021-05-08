@@ -1,6 +1,6 @@
 package WithSummon.Func
 
-import WithSummon.Func.TypeClass._
+import WithSummon.Func.ExpressionType._
 import cats.data.{EitherNec, NonEmptyChain}
 import cats.implicits._
 import cats._
