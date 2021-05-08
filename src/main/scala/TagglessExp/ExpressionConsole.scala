@@ -4,6 +4,8 @@ import TagglessExp.EvalProgram.SimpleExpression
 import cats._
 import cats.data._
 
+
+
 object ConsoleExp extends App {
   import scala.util.chaining._
 

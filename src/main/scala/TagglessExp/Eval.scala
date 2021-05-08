@@ -19,6 +19,7 @@ object Eval {
       (c: F[Int]) => c.map(-_)
 
     implicit def dslIdNeg: Negation[Id, Int] = dsl
+
   }
 
   object Addition {
