@@ -11,7 +11,7 @@ object Division {
     def typeClassInstance: Division[F, T]
     def self: F[T]
     def / (y: F[T]): F[T] = typeClassInstance.div(self, y)
-    def / (y: Int)(implicit num: Rub[F, T]) : F[T] = typeClassInstance.div(self, num.const(y))
+    def / (y: Int)(implicit num: Rub[F, T]) : F[T] = typeClassInstance.div(self, num.const1(y))
   }
 
   object ops {

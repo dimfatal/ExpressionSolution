@@ -7,8 +7,12 @@ import cats._
 
 object ViewInterpreter {
   object Num {
-    def dsl[F[_]: Applicative]: Rub[F, String] =
-      (n: Int) => s"$n rub".pure[F]
+    def dsl[F[_]: Applicative]: Rub[F, String] = new Rub[F, String] {
+      override def const(n: Int): F[String] = s"$n rub".pure[F]
+
+      override def const1(n: Int): F[String] = s"$n".pure[F]
+    }
+      //(n: Int) => s"$n".pure[F]
 
     implicit def dslIdNum: Rub[Id, String] = dsl
     implicit def dslEitherNecNum: Rub[EitherNec[String, *], String] = dsl
@@ -16,8 +20,8 @@ object ViewInterpreter {
 
 
   object Negation {
-    def dsl[F[_]: Functor]: Negation[F, String] =
-      (c: F[String]) => c.map(a => s"(-$a)")
+    def dsl[F[_]: Apply: NonEmptyParallel]: Negation[F, String] =
+      (c1: F[String], c2: F[String]) => (c1, c2).parMapN((s1, s2) => s"$s1 - $s2")
 
     implicit def dslIdNeg: Negation[Id, String] = dsl
     implicit def dslEitherNecNeg: Negation[EitherNec[String, *], String] = dsl

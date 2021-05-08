@@ -11,7 +11,7 @@ object Multiplication {
     def typeClassInstance: Multiplication[F, T]
     def self: F[T]
     def *(y: F[T]): F[T] = typeClassInstance.mul(self, y)
-    def *(y: Int)(implicit num: Rub[F, T]): F[T] = typeClassInstance.mul(self, num.const(y))
+    def *(y: Int)(implicit num: Rub[F, T]): F[T] = typeClassInstance.mul(self, num.const1(y))
   }
 
   object ops {

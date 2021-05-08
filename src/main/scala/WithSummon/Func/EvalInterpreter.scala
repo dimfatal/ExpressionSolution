@@ -7,8 +7,12 @@ import cats.{Applicative, Apply, Functor, Id, MonadError, NonEmptyParallel}
 
 object EvalInterpreter {
   object Num {
-    def dsl[F[_]: Applicative]: Rub[F, Int] = {
-      (n: Int) => n.pure[F]
+    def dsl[F[_]: Applicative]: Rub[F, Int] = new Rub[F, Int]  {
+     // (n: Int) => n.pure[F]
+
+      override def const(n: Int): F[Int] = n.pure[F]
+
+      override def const1(n: Int): F[Int] = n.pure[F]
     }
 
     implicit def dslIdNum: Rub[Id, Int] = dsl
@@ -16,8 +20,8 @@ object EvalInterpreter {
   }
 
   object Negation {
-    def dsl[F[_]: Functor]: Negation[F, Int] =
-      (c: F[Int]) => c.map(-_)
+    def dsl[F[_]: Apply: NonEmptyParallel]: Negation[F, Int] =
+      (c1: F[Int], c2: F[Int]) => (c1, c2).parMapN(_ - _)
 
     implicit def dslIdNeg: Negation[Id, Int] = dsl
     implicit def dslEitherNecNeg: Negation[EitherNec[String, *], Int] = dsl

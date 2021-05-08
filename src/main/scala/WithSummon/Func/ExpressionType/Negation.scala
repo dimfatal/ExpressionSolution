@@ -1,16 +1,17 @@
 package WithSummon.Func.ExpressionType
 
 trait Negation[F[_], T] {
-  def neg(e: F[T]): F[T]
+  def neg(e1: F[T], e2: F[T]): F[T]
 }
 
 object Negation {
-  def neg[F[_], T](n: F[T])(implicit impl: Negation[F, T]): F[T] = impl.neg(n)
+  def neg[F[_], T](n1: F[T], n2: F[T])(implicit impl: Negation[F, T]): F[T] = impl.neg(n1, n2)
 
   trait Ops[F[_], T] {
     def typeClassInstance: Negation[F, T]
     def self: F[T]
-    def unary_- : F[T] = typeClassInstance.neg(self)
+   // def unary_- : F[T] = typeClassInstance.neg(self)
+    def -(y: F[T]): F[T] = typeClassInstance.neg(self, y)
   }
 
   object ops {
