@@ -6,11 +6,11 @@ import cats.implicits._
 import cats._
 
 object ViewInterpreter {
-  object Num {
+  object Rub {
     def dsl[F[_]: Applicative]: Rub[F, String] = new Rub[F, String] {
-      override def const(n: Int): F[String] = s"$n rub".pure[F]
+      override def variable(n: Int): F[String] = s"$n rub".pure[F]
 
-      override def const1(n: Int): F[String] = s"$n".pure[F]
+      override def const(n: Int): F[String] = s"$n".pure[F]
     }
       //(n: Int) => s"$n".pure[F]
 

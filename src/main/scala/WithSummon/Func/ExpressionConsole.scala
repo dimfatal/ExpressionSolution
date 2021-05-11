@@ -25,7 +25,7 @@ object ExpressionConsoleView extends App {
   import WithSummon.Func.ViewInterpreter.Division._
   import WithSummon.Func.ViewInterpreter.Multiplication._
   import WithSummon.Func.ViewInterpreter.Negation._
-  import WithSummon.Func.ViewInterpreter.Num._
+  import WithSummon.Func.ViewInterpreter.Rub._
 
   import scala.util.chaining._
 

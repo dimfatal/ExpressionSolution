@@ -10,9 +10,9 @@ object EvalInterpreter {
     def dsl[F[_]: Applicative]: Rub[F, Int] = new Rub[F, Int]  {
      // (n: Int) => n.pure[F]
 
-      override def const(n: Int): F[Int] = n.pure[F]
+      override def variable(n: Int): F[Int] = n.pure[F]
 
-      override def const1(n: Int): F[Int] = n.pure[F]
+      override def const(n: Int): F[Int] = n.pure[F]
     }
 
     implicit def dslIdNum: Rub[Id, Int] = dsl

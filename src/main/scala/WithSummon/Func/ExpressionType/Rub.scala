@@ -1,8 +1,8 @@
 package WithSummon.Func.ExpressionType
 
 trait Rub[F[_], T] {
+  def variable(n: Int): F[T]
   def const(n: Int): F[T]
-  def const1(n: Int): F[T]
 }
 
 object Rub {
@@ -15,7 +15,7 @@ object Rub {
     implicit def toAllRubOps[F[_], T](target: Int)(implicit tc: Rub[F, T]): Ops[F, T] = new Ops[F, T] {
       override def typeClassInstance: Rub[F, T] = tc
 
-      override def rub: F[T] = tc.const(target)
+      override def rub: F[T] = tc.variable(target)
     }
   }
 }

@@ -9,7 +9,7 @@ object Multiplication {
   trait Ops[F[_], T] {
     def typeClassInstance: Multiplication[F, T]
     def self: F[T]
-    def *(y: Int)(implicit num: Rub[F, T]): F[T] = typeClassInstance.mul(self, num.const1(y))
+    def *(y: Int)(implicit num: Rub[F, T]): F[T] = typeClassInstance.mul(self, num.const(y))
   }
 
   object ops {
@@ -18,6 +18,10 @@ object Multiplication {
 
       override def self: F[T] = target
 
+    }
+
+    implicit class RichIntMul[F[_], T](val value: Int) extends AnyVal {
+      def * (n: F[T])(implicit m: Multiplication[F, T], r: Rub[F, T]): F[T] = m.mul(r.const(value), n)
     }
   }
 }
