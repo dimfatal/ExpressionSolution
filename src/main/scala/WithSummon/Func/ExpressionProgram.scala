@@ -17,7 +17,7 @@ object ExpressionProgram {
     import Negation.ops._
 
     def dsl[F[_]: Rub[*[_], T] : Negation[*[_], T] :  Addition[*[_], T] : Multiplication[*[_], T] : Division[*[_], T], T] : EvalProgram[F, T] = new EvalProgram[F, T] {
-      val run: F[T] = 5.rub * 3 / 5 - 10.rub
+      val run: F[T] = 5.rub * 3 / 5 - 10.rub + 2.rub
     }
   }
 }

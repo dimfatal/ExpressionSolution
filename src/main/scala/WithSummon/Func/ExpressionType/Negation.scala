@@ -5,7 +5,6 @@ trait Negation[F[_], T] {
 }
 
 object Negation {
-  def neg[F[_], T](n1: F[T], n2: F[T])(implicit impl: Negation[F, T]): F[T] = impl.neg(n1, n2)
 
   trait Ops[F[_], T] {
     def typeClassInstance: Negation[F, T]

@@ -6,8 +6,6 @@ trait Rub[F[_], T] {
 }
 
 object Rub {
-  def const[F[_], T](n: Int)(implicit impl: Rub[F, T]): F[T] = impl.const(n)
-
   trait Ops[F[_], T] {
     def typeClassInstance: Rub[F, T]
     def rub: F[T]

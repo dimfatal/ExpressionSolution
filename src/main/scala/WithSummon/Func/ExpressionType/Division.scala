@@ -5,12 +5,10 @@ trait Division[F[_], T] {
 }
 
 object Division {
-  def mul[F[_], T](n1: F[T],n2: F[T])(implicit impl: Division[F, T]): F[T] = impl.div(n1, n2)
 
   trait Ops[F[_], T] {
     def typeClassInstance: Division[F, T]
     def self: F[T]
-    def / (y: F[T]): F[T] = typeClassInstance.div(self, y)
     def / (y: Int)(implicit num: Rub[F, T]) : F[T] = typeClassInstance.div(self, num.const1(y))
   }
 

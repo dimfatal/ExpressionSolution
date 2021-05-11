@@ -5,7 +5,6 @@ trait Addition[F[_], T] {
 }
 
 object Addition {
-  def add[F[_], T](n1: F[T], n2: F[T])(implicit impl: Addition[F, T]): F[T] = impl.add(n1, n2)
 
   trait Ops[F[_], T] {
     def typeClassInstance:Addition[F, T]
